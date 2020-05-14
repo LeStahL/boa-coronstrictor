@@ -9,7 +9,7 @@ class Map:
     def __init__(self):
         pass
 
-    def __init__self(self, dirname):
+    def __init__(self, dirname):
         self.loadFromFilesystem(dirname)
         pass
 
@@ -25,30 +25,33 @@ class Map:
         self.Name = JSONFile['name']
         self.Tiles = []
         for TileJSON in JSONFile['tiles']:
-            self.tiles.append(Tile(TileJSON['name'], TileJSON['symbol'], TileJSON['file']))
+            self.Tiles.append(Tile(TileJSON['name'], TileJSON['symbol'], TileJSON['file']))
 
         LayoutFileName = "maps/" + dirname + "/" + dirname + ".layout"
         with open(LayoutFileName, "rt") as f:
             self.Layout = f.read()
             f.close()
         
+        print("Loaded map",self.Name,"with layout")
+        print(self.Layout)
+
         pass
 
     # Gives the width of the map
     def width(self):
         if(self.Layout == None):
             return 0
-        return len(self.Layout.split()[0])
+        return len(self.Layout.split('\n')[0])
 
     # Gives the height of the map
     def height(self):
         if(self.Layout == None):
             return 0
-        return len(self.Layout.split())
+        return len(self.Layout.split('\n'))
 
     # Returns the specific tile at position (x,y)
     def tileAt(self, x, y):
-        tileSymbol = self.Layout.split()[y][x]
+        tileSymbol = self.Layout.split("\n")[y][x]
         for tile in self.Tiles:
             if tile.Symbol == tileSymbol:
                 return tile
