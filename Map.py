@@ -25,15 +25,12 @@ class Map:
         self.Name = JSONFile['name']
         self.Tiles = []
         for TileJSON in JSONFile['tiles']:
-            self.Tiles.append(Tile(TileJSON['name'], TileJSON['symbol'], TileJSON['file']))
+            self.Tiles.append(Tile(TileJSON['name'], TileJSON['symbol'], TileJSON['file'], TileJSON['accessible']))
 
         LayoutFileName = "maps/" + dirname + "/" + dirname + ".layout"
         with open(LayoutFileName, "rt") as f:
             self.Layout = f.read()
             f.close()
-        
-        print("Loaded map",self.Name,"with layout")
-        print(self.Layout)
 
         pass
 
@@ -56,3 +53,21 @@ class Map:
             if tile.Symbol == tileSymbol:
                 return tile
         return None
+
+    # Returns a list of adjacent tiles for a given position (x,y)
+    def adjacentTiles(self,x,y):
+        ret = []
+        tile = self.tileAt(x+1,y)
+        if tile != None: 
+            ret.append(tile)
+        tile = self.tileAt(x, y+1)
+        if tile != None:
+            ret.append(tile)
+        tile = self.tileAt(x-1,y)
+        if tile != None:
+            ret.append(tile)
+        tile = self.tileAt(x,y-1)
+        if tile != None:
+            ret.append(tile)
+        return ret
+    

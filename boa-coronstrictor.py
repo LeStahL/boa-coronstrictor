@@ -15,7 +15,7 @@ class GameWindow:
         self.Width = self.Map.width() * 32
         self.Height = self.Map.height() * 32
         self.DisplaySurface = pygame.display.set_mode((self.Width, self.Height), pygame.HWSURFACE | pygame.DOUBLEBUF)
-        
+        pygame.time.set_timer(pygame.USEREVENT, 1000)
 
         while True:
             for event in pygame.event.get():
@@ -28,6 +28,8 @@ class GameWindow:
     def eventHandler(self, event):
         if event.type == pygame.QUIT:
             quit()
+        elif event.type == pygame.USEREVENT:
+            print("Tick")
         pass
 
     def render(self):

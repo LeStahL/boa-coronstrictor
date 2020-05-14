@@ -4,12 +4,14 @@
         {
             "name":"grass",
             "file":"tiles/grass.png",
-            "symbol":" "
+            "symbol":" ",
+            "accessible":true
         },
         {
             "name":"rock",
             "file":"tiles/rock.png",
-            "symbol":"#"
+            "symbol":"#",
+            "accessible":false
         }
     ]
 }
