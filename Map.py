@@ -33,3 +33,23 @@ class Map:
             f.close()
         
         pass
+
+    # Gives the width of the map
+    def width(self):
+        if(self.Layout == None):
+            return 0
+        return len(self.Layout.split()[0])
+
+    # Gives the height of the map
+    def height(self):
+        if(self.Layout == None):
+            return 0
+        return len(self.Layout.split())
+
+    # Returns the specific tile at position (x,y)
+    def tileAt(self, x, y):
+        tileSymbol = self.Layout.split()[y][x]
+        for tile in self.Tiles:
+            if tile.Symbol == tileSymbol:
+                return tile
+        return None
