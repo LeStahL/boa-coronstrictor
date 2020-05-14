@@ -1,0 +1,15 @@
+{
+    "name":"Example",
+    "tiles":[
+        {
+            "name":"grass",
+            "file":"tiles/grass.png",
+            "symbol":" "
+        },
+        {
+            "name":"rock",
+            "file":"tiles/rock.png",
+            "symbol":"#"
+        }
+    ],
+}
